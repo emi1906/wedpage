@@ -1,17 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
- <title>Contacto</title>
- <title>emili</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Imagen de Fondo y Contador</title>
+  <style>
+    /* Estilo para la página */
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://via.placeholder.com/1920x1080'); /* Cambia la URL por la imagen deseada */
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    /* Estilo para el botón */
+    .button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Contenedor del contador */
+    .counter {
+      margin-top: 50px;
+      font-size: 24px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
- <h1 style="color: red;">Contacto</h1>
-  <form>
-    <label>Nombre:</label>
-    <input type="text"><br><br>
-    <label>Correo:</label>
-    <input type="email"><br><br>
-    <input type="submit" value="Enviar">
-  </form>
+  <h1>Bienvenido a mi página</h1>
+
+  <!-- Botón para direccionar a otra página -->
+  <a href="https://www.ejemplo.com" class="button" target="_blank">Ir a otra página</a>
+
+  <!-- Contenedor del contador -->
+  <div class="counter">
+    Visitas: <span id="visitCount">0</span>
+  </div>
+
+  <script>
+    // Código para manejar el contador de visitas
+    const visitCountKey = 'visitCount';
+
+    // Recuperar el valor actual del contador desde el almacenamiento local (localStorage)
+    let visitCount = localStorage.getItem(visitCountKey);
+
+    if (!visitCount) {
+      visitCount = 0; // Si no existe, inicializarlo en 0
+    } else {
+      visitCount = parseInt(visitCount); // Convertir a número entero
+    }
+
+    // Incrementar el contador
+    visitCount++;
+
+    // Actualizar el contador en el almacenamiento local
+    localStorage.setItem(visitCountKey, visitCount);
+
+    // Mostrar el contador en la página
+    document.getElementById('visitCount').textContent = visitCount;
+  </script>
 </body>
 </html>
