@@ -2,184 +2,122 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Bienvenida a mi página mágica</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página web mejorada con diseño moderno, accesible y funcional.">
-  <title>Página Mejorada</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #007BFF;
-      --secondary: #00bfff;
-      --bg-dark: rgba(0,0,0,0.65);
-      --bg-content: rgba(0,0,0,0.4);
-      --border-radius: 18px;
-      --shadow: 0 8px 32px 0 #0006;
-      --font-main: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
     body {
-      margin: 0; padding: 0;
-      font-family: var(--font-main);
-      color: #fff;
-      background: url('https://wallpapers.com/images/featured/estrella-en-3d-iuzr6rbm0rdhpvji.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(to bottom right, #ffe3f5 0%, #c4e0fc 100%);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      width: 100%;
-      padding: 24px 0 6px 0;
-      background: linear-gradient(90deg, var(--bg-dark), transparent);
-      box-shadow: 0 2px 10px #0005;
-    }
-    header h1 {
+      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
       margin: 0;
-      font-size: 2.6em;
-      letter-spacing: 1.5px;
-      font-weight: bold;
-      text-shadow: 0 2px 10px #000b;
-    }
-    main {
-      flex: 1;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
-    .content {
-      background: var(--bg-content);
-      padding: 32px 24px 28px 24px;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
+    .container {
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      padding: 40px 30px 30px 30px;
       text-align: center;
-      max-width: 420px;
-      margin: 35px 12px 0 12px;
-      position: relative;
-      z-index: 2;
+      max-width: 340px;
     }
-    .center-img-container {
-      width: 100%;
+    h1 {
+      color: #ed71c1;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #7a4ba2;
+      font-size: 1.2em;
+      margin-bottom: 28px;
+    }
+    .cute-img {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(237,113,193,0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 22px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .center-img-container img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      border-radius: var(--border-radius);
-      box-shadow: 0 0 30px #000a;
-      opacity: 0.85;
-    }
-    h2 {
-      margin-top: 0;
-      font-size: 1.5em;
-      font-weight: 600;
-      color: #fff;
-      text-shadow: 0 1px 8px #0008;
-    }
-    .button {
-      margin-top: 28px;
-      padding: 15px 40px;
-      font-size: 1.18em;
-      background: linear-gradient(90deg, var(--primary) 40%, var(--secondary) 100%);
-      color: #fff;
+    button {
+      background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
       border: none;
-      border-radius: 7px;
+      color: #fff;
+      padding: 15px 34px;
+      border-radius: 40px;
+      font-size: 1.1em;
+      font-weight: bold;
       cursor: pointer;
-      font-weight: 600;
-      box-shadow: 0 2px 8px #0003;
-      outline: none;
-      transition: background 0.3s, transform 0.2s;
-      display: inline-block;
-      letter-spacing: 1px;
+      margin-top: 16px;
+      box-shadow: 0 4px 12px rgba(237,113,193,0.13);
+      transition: background 0.3s;
     }
-    .button:hover, .button:focus {
-      background: linear-gradient(90deg, #0056b3 40%, #0088cc 100%);
-      transform: scale(1.05);
+    button:hover {
+      background: linear-gradient(90deg, #fed6e3 0%, #a8edea 100%);
+      color: #ed71c1;
     }
     .counter {
-      margin-top: 36px;
-      font-size: 1.23em;
-      background: rgba(0,0,0,0.65);
-      padding: 12px 0;
-      border-radius: 8px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      box-shadow: 0 1px 5px #000a;
-    }
-    footer {
-      width: 100%;
-      background: linear-gradient(90deg, var(--bg-dark), transparent);
-      text-align: center;
-      padding: 18px 0 8px 0;
-      font-size: 1em;
-      color: #cceeff;
-      margin-top: 20px;
-      box-shadow: 0 -2px 12px #0007;
-    }
-    .footer-links {
-      margin: 10px 0 0 0;
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-    }
-    .footer-links a {
-      color: #cceeff;
-      text-decoration: none;
-      transition: color 0.2s;
-      font-size: 1.2em;
-    }
-    .footer-links a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 1.5em; }
-      .content { padding: 18px 5px 16px 5px; max-width: 98vw; }
-      .center-img-container img { max-width: 98vw; }
-      .button { padding: 12px 22px; font-size: 1em; }
-      .counter { font-size: 1em; }
+      margin-top: 24px;
+      font-size: 1.1em;
+      background: #fff0fa;
+      padding: 8px 20px;
+      border-radius: 20px;
+      color: #ed71c1;
+      display: inline-block;
+      box-shadow: 0 1px 4px rgba(237,113,193,0.1);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Bienvenid@ a Mi Página Mejorada</h1>
-  </header>
-  <main>
-    <div class="content" role="main">
-      <div class="center-img-container">
-        <img src="https://wallpapers.com/images/featured/estrella-en-3d-iuzr6rbm0rdhpvji.jpg" alt="Imagen decorativa de estrella en 3D">
-      </div>
-      <h2>¡Explora las mejoras de diseño, funcionalidad y accesibilidad!</h2>
-      <button class="button" onclick="incrementCounter()" aria-label="Contador de visitas">Haz clic aquí</button>
-      <div class="counter" id="counter" aria-live="polite">Has hecho clic 0 veces.</div>
+  <div class="container">
+    <div class="cute-img">
+      <!-- Imagen SVG de unicornio lindo -->
+      <svg width="90" height="90" viewBox="0 0 90 90">
+        <ellipse cx="45" cy="60" rx="32" ry="22" fill="#fff6fa" />
+        <ellipse cx="45" cy="50" rx="22" ry="16" fill="#fff" />
+        <ellipse cx="45" cy="45" rx="12" ry="10" fill="#ffe3f5" />
+        <rect x="42" y="22" width="6" height="25" rx="3" fill="#f9e79f" />
+        <ellipse cx="45" cy="40" rx="8" ry="6" fill="#fff" />
+        <circle cx="41" cy="40" r="1.6" fill="#ed71c1" />
+        <circle cx="49" cy="40" r="1.6" fill="#ed71c1" />
+      </svg>
     </div>
-  </main>
-  <footer>
-    <div>Sitio creado por emi1906 &copy; 2025</div>
-    <div class="footer-links">
-      <a href="https://github.com/emi1906" target="_blank" rel="noopener" aria-label="GitHub de emi1906">GitHub</a>
-      <a href="mailto:tuemail@ejemplo.com" aria-label="Correo electrónico">Email</a>
-      <a href="#" aria-label="Otra red social">Twitter</a>
+    <h1>¡Bienvenida, princesa!</h1>
+    <p>Esta es tu página mágica. Haz clic en el botón para ir a tu lugar secreto.</p>
+    <button onclick="goToPage()">Ir a mi otra página</button>
+    <div class="counter" id="viewCounter">
+      Cargando visitas...
     </div>
-  </footer>
+  </div>
   <script>
-    // Accesibilidad: actualiza el texto del contador y lo guarda en localStorage
-    function incrementCounter() {
-      let count = parseInt(localStorage.getItem('counter') || '0', 10) + 1;
-      localStorage.setItem('counter', count);
-      document.getElementById('counter').textContent = `Has hecho clic ${count} vez${count === 1 ? '' : 'es'}.`;
+    // Cambia la URL aquí por la tuya
+    const destinationURL = "https://tupaginaejemplo.com";
+
+    // Contador de vistas usando localStorage
+    function updateCounter() {
+      let count = localStorage.getItem("viewCounter");
+      if (!count) count = 0;
+      count = parseInt(count) + 1;
+      localStorage.setItem("viewCounter", count);
+      document.getElementById("viewCounter").textContent =
+        "¡Esta página ha sido vista " + count + " veces!";
     }
-    // Mostrar contador persistente
-    window.onload = function() {
-      let count = parseInt(localStorage.getItem('counter') || '0', 10);
-      document.getElementById('counter').textContent = `Has hecho clic ${count} vez${count === 1 ? '' : 'es'}.`;
+
+    // Llama al contador al cargar la página
+    updateCounter();
+
+    // Incrementa también el contador si dan click al botón
+    function goToPage() {
+      updateCounter();
+      window.location.href = destinationURL;
     }
   </script>
 </body>
