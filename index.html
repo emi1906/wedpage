@@ -2,22 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
   <title>Página con Imagen de Fondo y Contador</title>
   <style>
-    /* Estilo para la página */
     body {
       margin: 0;
       padding: 0;
-      background-image: url('https://wallpapers.com/images/featured/estrella-en-3d-iuzr6rbm0rdhpvji.jpg'); /* Cambia la URL por la imagen deseada */
+      background-image: url('https://wallpapers.com/images/featured/estrella-en-3d-iuzr6rbm0rdhpvji.jpg');
       background-size: cover;
       background-position: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      min-height: 100vh;
+      min-width: 100vw;
     }
 
-    /* Estilo para el botón */
+    /* Centrar imagen a 1920x1080 */
+    .center-img-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .center-img-container img {
+      width: 1920px;
+      height: 1080px;
+      object-fit: contain;
+      box-shadow: 0 0 30px #000a;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
     .button {
       margin-top: 20px;
       padding: 15px 30px;
@@ -29,12 +54,10 @@
       cursor: pointer;
       text-decoration: none;
     }
-
     .button:hover {
       background-color: #0056b3;
     }
 
-    /* Contenedor del contador */
     .counter {
       margin-top: 50px;
       font-size: 24px;
@@ -46,38 +69,17 @@
   </style>
 </head>
 <body>
-  <h1>Disfruta el mensaje que es para ti </h1>
-
-  <!-- Botón para direccionar a otra página -->
-  <a href="https://emi1906.github.io/Mi-pagina-web/" class="button" target="_blank">Ir a otra página</a>
-
-  <!-- Contenedor del contador -->
-  <div class="counter">
-    Visitas: <span id="visitCount">0</span>
+  <div class="center-img-container">
+    <img src="https://wallpapers.com/images/featured/estrella-en-3d-iuzr6rbm0rdhpvji.jpg" alt="Imagen centrada 1920x1080">
   </div>
-
-  <script>
-    // Código para manejar el contador de visitas
-    const visitCountKey = 'visitCount';
-
-    // Recuperar el valor actual del contador desde el almacenamiento local (localStorage)
-    let visitCount = localStorage.getItem(visitCountKey);
-
-    if (!visitCount) {
-      visitCount = 0; // Si no existe, inicializarlo en 0
-    } else {
-      visitCount = parseInt(visitCount); // Convertir a número entero
-    }
-
-    // Incrementar el contador
-    visitCount++;
-
-    // Actualizar el contador en el almacenamiento local
-    localStorage.setItem(visitCountKey, visitCount);
-
-    // Mostrar el contador en la página
-    document.getElementById('visitCount').textContent = visitCount;
-    <a href="https://emi1906.github.io/tu-otra-pagina/" class="button" target="_blank">Ir a otra página</a>
-  </script>
+  <div class="content">
+    <h1>Disfruta el mensaje que es para ti</h1>
+    <a href="https://emi1906.github.io/Mi-pagina-web/" class="button" target="_blank">Ir a otra página</a>
+    <div class="counter">
+      Visitas: 
+      <!-- Contador externo, por ejemplo de simple hitwebcounter -->
+      <img src="https://hitwebcounter.com/counter/counter.php?page=1234567&style=0006&nbdigits=5&type=ip&initCount=0" title="Contador de visitas" Alt="web counter" border="0" />
+    </div>
+  </div>
 </body>
 </html>
