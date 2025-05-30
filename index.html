@@ -1,84 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Página con Fondo, Botón, Audio y Contador</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background-image: url('https://i.pinimg.com/originals/b6/72/26/b67226cd076f235ef745a4cd0cbfbcc6.jpg'); /* Cambia esta URL por la de tu imagen */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .contenedor {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 24px;
-            color: #333;
-        }
-        #visitador {
-            padding: 12px 32px;
-            font-size: 20px;
-            border: none;
-            border-radius: 8px;
-            background: #3498db;
-            color: white;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        #visitador:hover {
-            background: #217dbb;
-        }
-        #contador {
-            margin-top: 20px;
-            font-size: 22px;
-            color: #3498db;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Página con fondo, contador, audio y botón</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(120deg, #74ebd5 0%, #ACB6E5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      padding: 40px 50px;
+      box-shadow: 0 6px 30px #0001;
+      text-align: center;
+      max-width: 90vw;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    #contador {
+      font-size: 1.7rem;
+      margin: 20px 0 28px 0;
+      color: #0091ff;
+    }
+    .audio-control {
+      margin: 23px 0;
+    }
+    button {
+      padding: 13px 30px;
+      background: #0091ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0360a5;
+    }
+  </style>
 </head>
 <body>
-    <div class="contenedor">
-        <h1>ESPECIALMENTE PARA TI CON CARIÑO</h1>
-        <button id="visitador">Ir a mi otra página</button>
-        <div id="contador">Vistas: 0</div> 
-        <button onclick="window.location.href='https://github.com/emi1906/Mi-pagina-web/blob/main/index.html'">Ir a otra página</button>
-    <br>
-        <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3"></audio>
+  <div class="container">
+    <h1>Bienvenido a mi página</h1>
+    <div id="contador">Vistas: 0</div>
+    <div class="audio-control">
+      <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
     </div>
-    <script>
-        // Inicializar el contador con localStorage
-        let contador = localStorage.getItem('contadorVistas') || 0;
-        const contadorDiv = document.getElementById('contador');
-        const boton = document.getElementById('visitador');
-        const audio = document.getElementById('audio');
-        // Mostrar el contador al cargar
-        contadorDiv.textContent = 'Vistas: ' + contador;
-        // Evento al hacer clic en el botón
-        boton.addEventListener('click', function() {
-            contador++;
-            contadorDiv.textContent = 'Vistas: ' + contador;
-            localStorage.setItem('contadorVistas', contador);
-            audio.currentTime = 0;
-            audio.play();
-            // Redirigir al terminar el audio
-            audio.onended = function() {
-                window.location.href = ""; // Cambia la URL aquí a la de tu otra página
-            };
-        });
-    </script>
+    <button id="irPagina">Ir a otra página</button>
+  </div>
+  <script>
+    // Contador de vistas usando localStorage
+    const contadorElemento = document.getElementById('contador');
+    let vistas = parseInt(localStorage.getItem('contadorVistas')) || 0;
+    vistas++;
+    localStorage.setItem('contadorVistas', vistas);
+    contadorElemento.textContent = "Vistas: " + vistas;
+
+    // Botón para redirigir a otra página
+    document.getElementById('irPagina').onclick = function() {
+      // Cambia la URL de abajo por la página de destino que desees
+      window.location.href = "https://www.ejemplo.com";
+    }
+  </script>
 </body>
 </html>
-     
+       
       
  
