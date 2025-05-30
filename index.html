@@ -51,7 +51,9 @@
     <div class="contenedor">
         <h1>ESPECIALMENTE PARA TI CON CARIÑO</h1>
         <button id="visitador">Ir a mi otra página</button>
-        <div id="contador">Vistas: 0</div>
+        <div id="contador">Vistas: 0</div> 
+        <button onclick="window.location.href='https://github.com/emi1906/Mi-pagina-web/blob/main/index.html'">Ir a otra página</button>
+    <br>
         <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3"></audio>
     </div>
     <script>
@@ -71,7 +73,7 @@
             audio.play();
             // Redirigir al terminar el audio
             audio.onended = function() {
-                window.location.href = "https://github.com/emi1906/Mi-pagina-web/blob/main/index.html"; // Cambia la URL aquí a la de tu otra página
+                window.location.href = ""; // Cambia la URL aquí a la de tu otra página
             };
         });
     </script>
