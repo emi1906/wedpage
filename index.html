@@ -1,125 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>  PARA TI </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background: linear-gradient(to bottom right, #ffe3f5 0%, #c4e0fc 100%);
-      min-height: 100vh;
-      font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: rgba(255,255,255,0.85);
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      padding: 40px 30px 30px 30px;
-      text-align: center;
-      max-width: 340px;
-    }
-    h1 {
-      color: CYAN;
-      font-size: 2.3em;
-      margin-bottom: 10px;
-    }
-    p {
-      color:black;
-      font-size: 1.2em;
-      margin-bottom: 28px;
-    }
-    .cute-img {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 20px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(237,113,193,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    button {
-      background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
-      border: none;
-      color: #fff;
-      padding: 15px 34px;
-      border-radius: 40px;
-      font-size: 1.1em;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 16px;
-      box-shadow: 0 4px 12px rgba(237,113,193,0.13);
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: linear-gradient(90deg, #fed6e3 0%, #a8edea 100%);
-      color: #ed71c1;
-    }
-    .counter {
-      margin-top: 24px;
-      font-size: 1.1em;
-      background: #fff0fa;
-      padding: 8px 20px;
-      border-radius: 20px;
-      color: #ed71c1;
-      display: inline-block;
-      box-shadow: 0 1px 4px rgba(237,113,193,0.1);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Página con Fondo, Botón, Audio y Contador</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* Cambia esta URL por la de tu imagen */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .contenedor {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 24px;
+            color: #333;
+        }
+        #visitador {
+            padding: 12px 32px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #visitador:hover {
+            background: #217dbb;
+        }
+        #contador {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #3498db;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="cute-img">
-      <!-- Imagen SVG de unicornio lindo -->
-      <svg width="90" height="90" viewBox="0 0 90 90">
-        <ellipse cx="45" cy="60" rx="32" ry="22" fill="#fff6fa" />
-        <ellipse cx="45" cy="50" rx="22" ry="16" fill="#fff" />
-        <ellipse cx="45" cy="45" rx="12" ry="10" fill="#ffe3f5" />
-        <rect x="42" y="22" width="6" height="25" rx="3" fill="#f9e79f" />
-        <ellipse cx="45" cy="40" rx="8" ry="6" fill="#fff" />
-        <circle cx="41" cy="40" r="1.6" fill="#ed71c1" />
-        <circle cx="49" cy="40" r="1.6" fill="#ed71c1" />
-      </svg>
+    <div class="contenedor">
+        <h1>Bienvenido</h1>
+        <button id="visitador">Ir a mi otra página</button>
+        <div id="contador">Vistas: 0</div>
+        <audio id="audio" src="https://www.soundjay.com/buttons/sounds/button-29.mp3"></audio>
     </div>
-    <h1>!ESTO ES PARA TI CON CARIÑO!</h1>
-    <p> Haz clic en el botón para ir a tu lugar secreto.</p>
-    <button onclick="goToPage()">Ir a mi otra página</button>
-    <div class="counter" id="viewCounter">
-    </div>
-  </div>
-  <script>
+    <script>
+        // Inicializar el contador con localStorage
+        let contador = localStorage.getItem('contadorVistas') || 0;
+        const contadorDiv = document.getElementById('contador');
+        const boton = document.getElementById('visitador');
+        const audio = document.getElementById('audio');
+        // Mostrar el contador al cargar
+        contadorDiv.textContent = 'Vistas: ' + contador;
+        // Evento al hacer clic en el botón
+        boton.addEventListener('click', function() {
+            contador++;
+            contadorDiv.textContent = 'Vistas: ' + contador;
+            localStorage.setItem('contadorVistas', contador);
+            audio.currentTime = 0;
+            audio.play();
+            // Redirigir al terminar el audio
+            audio.onended = function() {
+                window.location.href = "https://tu-otra-pagina.com"; // Cambia la URL aquí a la de tu otra página
+            };
+        });
+    </script>
 </body>
 </html>
-    // Cambia la URL aquí por la tuya
-    const destinationURL = "https://github.com/emi1906/Mi-pagina-web/settings/pages#:~:text=https%3A//emi1906.github.io/Mi%2Dpagina%2Dweb/";
-
-    // Contador de vistas usando localStorage
-    function updateCounter() {
-      let count = localStorage.getItem("viewCounter");
-      if (!count) count = 0;
-      count = parseInt(count) + 1;
-      localStorage.setItem("viewCounter", count);
-      document.getElementById("viewCounter").textContent =
-        "¡Esta página ha sido vista " + count + " veces!";
-    }
-
-    // Llama al contador al cargar la página
-    updateCounter();
-
-    // Incrementa también el contador si dan click al botón
-    function goToPage() {
-      updateCounter();
-      window.location.href = destinationURL;
-    }
-  </script>
-</body>
-</html>
+     
+      
+ 
