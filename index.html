@@ -11,9 +11,6 @@
             background-repeat: no-repeat;
             min-height: 100vh;
         }
-        .hidden-audio {
-            display: none;
-        }
         .container {
             background: rgba(255, 255, 255, 0.7);
             max-width: 500px;
@@ -57,14 +54,13 @@
 <body>
     <div class="container">
         <h1>¡Felicidades!👑</h1>
-        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Tu ouedes con esto y mas!</p>
-       <audio class="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay muted>
-  <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
-  Tu navegador no soporta el elemento de audio.
-</audio>
+        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Tú puedes con esto y más!</p>
+        <audio id="felicidades-audio" controls autoplay>
+          <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
         <p class="contador">Visitas: <span id="contador">0</span></p>
         <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
     </div>
 </body>
 </html>
-        
