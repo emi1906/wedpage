@@ -1,86 +1,58 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>¡Felicidades Princesa Graduada!</title>
-    <style>
-        body {
-            text-align: center;
-            padding: 50px;
-            background-size: cover;
-            background-position: center;
-            transition: background 0.5s;
-            color: #fff;
-            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
-        }
-        .container {
-            background: rgba(0,0,0,0.5);
-            padding: 30px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        #contador {
-            font-size: 2em;
-            margin: 20px 0;
-        }
-        input[type="file"] {
-            display: none;
-        }
-        label {
-            background: #fa8eaf;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px;
-        }
-        button {
-            background: #85e085;
-            color: #222;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .audio-controls {
-            margin: 20px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>¡Felicidades!👑</h1>
-        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
-        
-        <div id="contador">Visitas: 0</div>
-        
-        <div>
-            <input type="https://png.pngtree.com/thumb_back/fw800/background/20231009/pngtree-breathtaking-aurora-borealis-illuminating-arctic-rocky-seascape-in-stunning-3d-artwork-image_13554449.png"" id="fondo-input" accept="image/*">
-        </div>
-        
-        <div class="audio-controls">
-            <label for="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3">
-           
-        
-        <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+<!-- ... (estilos y encabezado igual) ... -->
+<div class="container">
+    <h1>¡Felicidades!👑</h1>
+    <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
+
+    <div id="contador">Visitas: 0</div>
+    <div id="ultima-visita"></div>
+    <button id="reset-contador">Reiniciar contador</button>
+
+    <div>
+        <label for="fondo-input">Cambiar fondo</label>
+        <input type="file" id="fondo-input" accept="image/*">
     </div>
-    
-    <script>
-        // Contador de vistas con localStorage
-        function actualizarContador() {
-            let visitas = localStorage.getItem('contadorVisitas') || 0;
-            visitas++;
-            localStorage.setItem('contadorVisitas', visitas);
-            document.getElementById('contador').textContent = 'Visitas: ' + visitas;
+
+    <div class="audio-controls">
+        <span>Reproduciendo: Lady Gaga Bruno Mars - Die With A Smile</span>
+        <audio controls autoplay loop>
+            <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+</div>
+<script>
+    function actualizarContador() {
+        let visitas = localStorage.getItem('contadorVisitas') || 0;
+        visitas++;
+        localStorage.setItem('contadorVisitas', visitas);
+        document.getElementById('contador').textContent = 'Visitas: ' + visitas;
+
+        let ultima = localStorage.getItem('ultimaVisita');
+        if (ultima) {
+            document.getElementById('ultima-visita').textContent = "Última visita: " + ultima;
+        } else {
+            document.getElementById('ultima-visita').textContent = "¡Es tu primera visita!";
         }
+        let ahora = new Date().toLocaleString();
+        localStorage.setItem('ultimaVisita', ahora);
+    }
+    actualizarContador();
+
+    document.getElementById('reset-contador').onclick = function() {
+        localStorage.setItem('contadorVisitas', 0);
+        localStorage.removeItem('ultimaVisita');
         actualizarContador();
-       }
-        });
-    </script>
-</body>
-</html>
-   
-    
-  
+    };
+
+    document.getElementById('fondo-input').addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                document.body.style.backgroundImage = 'url(' + ev.target.result + ')';
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+</script>
