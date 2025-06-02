@@ -28,16 +28,7 @@
         visitas++;
         localStorage.setItem('contadorVisitas', visitas);
         document.getElementById('contador').textContent = 'Visitas: ' + visitas;
-
-        let ultima = localStorage.getItem('ultimaVisita');
-        if (ultima) {
-            document.getElementById('ultima-visita').textContent = "Última visita: " + ultima;
-        } else {
-            document.getElementById('ultima-visita').textContent = "¡Es tu primera visita!";
-        }
-        let ahora = new Date().toLocaleString();
-        localStorage.setItem('ultimaVisita', ahora);
-    }
+ }
     actualizarContador();
 
     document.getElementById('reset-contador').onclick = function() {
