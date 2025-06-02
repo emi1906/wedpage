@@ -37,9 +37,23 @@
             margin-top: 10px;
         }
     </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡PARA TI !👑</h1>
+        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Tú puedes con esto y más!</p>
+        <!-- AUDIO OCULTO Y AUTOPLAY -->
+        <audio id="audio" autoplay style="display:none;">
+            <source src="LadyGaga-BrunoMars-DieWithASmile.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <p class="contador">Visitas: <span id="contador">0</span></p>
+        <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+    </div>
     <script>
         // Contador de visitas usando LocalStorage
         window.onload = function() {
+            // Contador de visitas
             let visitas = localStorage.getItem('contadorVisitas');
             if (visitas === null) {
                 visitas = 1;
@@ -48,19 +62,14 @@
             }
             localStorage.setItem('contadorVisitas', visitas);
             document.getElementById('contador').textContent = visitas;
+
+            // Intentar reproducir el audio al cargar (algunos navegadores pueden bloquear el autoplay)
+            var audio = document.getElementById('audio');
+            if(audio){
+                audio.play().catch(function(){});
+            }
         }
     </script>
-</head>
-<body>
-    <div class="container">
-        <h1>¡PARA TI !👑</h1>
-        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Tú puedes con esto y más!</p>
-        <audio id="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay style="display:none;">
-          <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
-          Tu navegador no soporta el elemento de audio.
-        </audio>
-        <p class="contador">Visitas: <span id="contador">0</span></p>
-        <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
-    </div>
 </body>
 </html>
+  
