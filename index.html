@@ -30,12 +30,12 @@
         <h1>¡Felicidades!👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
         
-        <!-- Contador global de visitas como texto -->
+        <!-- Contador de visitas local -->
         <div id="contador">
-             <span id="visitas">...</span></span>
+            <span>Visitas a esta página (en este dispositivo): <span id="visitas">...</span></span>
         </div>
         
-        <!-- Audio (puedes cambiar el archivo aquí) -->
+        <!-- Audio -->
         <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay style="display:none"></audio>
         <br>
         
@@ -61,15 +61,18 @@
             }
         });
 
-        // Contador de visitas usando CountAPI
-        fetch('https://api.countapi.xyz/hit/emi1906-wedpage/visitas')
-          .then(response => response.json())
-          .then(data => {
-            document.getElementById('visitas').innerText = data.value;
-          });
+        // Contador de visitas local
+        let visitas = localStorage.getItem('contadorVisitas');
+        if (!visitas) {
+            visitas = 1;
+        } else {
+            visitas = parseInt(visitas, 10) + 1;
+        }
+        localStorage.setItem('contadorVisitas', visitas);
+        document.getElementById('visitas').innerText = visitas;
     </script>
 </body>
 </html>
-
           
         
+       
