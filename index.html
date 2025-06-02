@@ -10,23 +10,6 @@
             background-position: center;
             background-repeat: no-repeat;
             min-height: 100vh;
-        }
-        .container {
-            background: rgba(255,255,255,0.85);
-            padding: 2em;
-            border-radius: 12px;
-            max-width: 500px;
-            margin: 3em auto;
-            text-align: center;
-        }
-        #contador {
-            font-size: 1.2em;
-            margin: 1em 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
         <h1>¡Felicidades!👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
         <!-- Audio -->
@@ -36,9 +19,6 @@
           </style>
 </head>
 <body>
-    <div id="contador">
-        Visitas: <span id="visitas"></span>
-    </div>
     <script>
         // Contador de visitas local
         let visitas = localStorage.getItem('contadorVisitas');
