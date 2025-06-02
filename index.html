@@ -51,7 +51,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>¡Felicidades, Princesa! 👑🎓</h1>
+        <h1>¡Felicidades!👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
         
         <div id="contador">Visitas: 0</div>
@@ -79,28 +79,7 @@
             document.getElementById('contador').textContent = 'Visitas: ' + visitas;
         }
         actualizarContador();
-        
-        // Cambiar fondo
-        document.getElementById('fondo-input').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    document.body.style.backgroundImage = `url('${evt.target.result}')`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        
-        // Agregar audio personalizado
-        document.getElementById('audio-input').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const audio = document.getElementById('player');
-                audio.src = URL.createObjectURL(file);
-                audio.style.display = 'block';
-                audio.play();
-            }
+       }
         });
     </script>
 </body>
