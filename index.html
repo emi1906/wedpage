@@ -1,6 +1,4 @@
-<div class="container">
-    <h1>¡Felicidades!👑</h1>
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -13,33 +11,58 @@
             background-repeat: no-repeat;
             min-height: 100vh;
         }
+        .container {
+            background: rgba(255,255,255,0.85);
+            padding: 2em;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 3em auto;
+            text-align: center;
+        }
+        #contador {
+            font-size: 1.2em;
+            margin: 1em 0;
+        }
     </style>
 </head>
 <body>
-    <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
-
-    <div id="contador">Visitas: 0</div>
-    <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay style="display:none"></audio>
-    </section>
-
-    <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
-</div>
-<script>
-    // ...tu código de contador...
-
-    // Fondo personalizado (4K)
-    const fondoGuardado = localStorage.getItem('fondoPersonalizado');
-    if (fondoGuardado) {
-        document.body.style.backgroundImage = 'url(' + fondoGuardado + ')';
-    }
-    document.getElementById('fondo-input').addEventListener('change', function(e) {
-        if (e.target.files && e.target.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                document.body.style.backgroundImage = 'url(' + ev.target.result + ')';
-                localStorage.setItem('fondoPersonalizado', ev.target.result);
-            }
-            reader.readAsDataURL(e.target.files[0]);
+    <div class="container">
+        <h1>¡Felicidades!👑</h1>
+        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
+        
+        <!-- Contador global de visitas -->
+        <div id="contador">
+            <a href="https://hits.seeyoufarm.com">
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Femi1906.github.io%2Fwedpage&count_bg=%2379C83D&title_bg=%23555555&icon=github.svg&icon_color=%23E7E7E7&title=Visitas&edge_flat=false"/>
+            </a>
+        </div>
+        
+        <!-- Audio (puedes cambiar el archivo aquí) -->
+        <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay hidden></audio>
+        <br>
+        
+        <label for="fondo-input">Personaliza el fondo: </label>
+        <input type="file" id="fondo-input" accept="image/*">
+        <br><br>
+        <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+    </div>
+    <script>
+        // Fondo personalizado
+        const fondoGuardado = localStorage.getItem('fondoPersonalizado');
+        if (fondoGuardado) {
+            document.body.style.backgroundImage = 'url(' + fondoGuardado + ')';
         }
-    });
-</script>
+        document.getElementById('fondo-input').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    document.body.style.backgroundImage = 'url(' + ev.target.result + ')';
+                    localStorage.setItem('fondoPersonalizado', ev.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>
+    
