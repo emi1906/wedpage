@@ -4,39 +4,36 @@
 
     <div id="contador">Visitas: 0</div>
 
-    <!-- Audio bien estructurado -->
-    <audio controls>
-        <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
+    <section aria-label="Reproductor de audio">
+        <h2>Disfruta la música</h2>
+        <audio controls>
+            <source src="audio/LadyGagaBrunoMars-DieWithASmile.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </section>
 
     <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
     <button id="reset-contador">Reiniciar contador</button><br>
+    <label for="fondo-input">Elige una imagen de fondo (recomendado 4K):</label>
     <input type="file" id="fondo-input" accept="image/*">
 </div>
-
 <script>
-    function actualizarContador() {
-        let visitas = localStorage.getItem('contadorVisitas') || 0;
-        visitas++;
-        localStorage.setItem('contadorVisitas', visitas);
-        document.getElementById('contador').textContent = 'Visitas: ' + visitas;
+    // ...tu código de contador...
+
+    // Fondo personalizado (4K)
+    const fondoGuardado = localStorage.getItem('fondoPersonalizado');
+    if (fondoGuardado) {
+        document.body.style.backgroundImage = 'url(' + fondoGuardado + ')';
     }
-    actualizarContador();
-
-    document.getElementById('reset-contador').onclick = function() {
-        localStorage.setItem('contadorVisitas', 0);
-        localStorage.removeItem('ultimaVisita');
-        actualizarContador();
-    };
-
     document.getElementById('fondo-input').addEventListener('change', function(e) {
         if (e.target.files && e.target.files[0]) {
             const reader = new FileReader();
             reader.onload = function(ev) {
                 document.body.style.backgroundImage = 'url(' + ev.target.result + ')';
+                localStorage.setItem('fondoPersonalizado', ev.target.result);
             }
             reader.readAsDataURL(e.target.files[0]);
         }
     });
 </script>
+           
