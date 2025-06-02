@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>¡PARA TI!
-        👑</title>
+    <title>¡PARA TI!👑</title>
     <style>
         body {
             background-image: url('https://img.freepik.com/premium-photo/vector-graduation-background-with-mortar-boards-vector_575980-38383.jpg?size=626&ext=jpg');
@@ -37,16 +36,6 @@
             font-weight: normal;
             margin-top: 10px;
         }
-        #playButton {
-            display: none;
-            margin-top: 10px;
-            font-size: 1rem;
-            border-radius: 7px;
-            border: none;
-            background: #ffd700;
-            color: #333;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -54,11 +43,10 @@
         <h1>¡PARA TI !👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Tú puedes con esto y más!</p>
         <!-- AUDIO OCULTO Y AUTOPLAY -->
-        <audio id="audio" autoplay style="display:none;">
+        <audio id="audio" autoplay hidden>
             <source src="LadyGaga-BrunoMars-DieWithASmile.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
-        <button id="playButton">Haz clic para escuchar la canción 🎶</button>
         <p class="contador">Visitas: <span id="contador">0</span></p>
         <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
     </div>
@@ -77,20 +65,9 @@
 
             // Intentar reproducir el audio al cargar (algunos navegadores pueden bloquear el autoplay)
             var audio = document.getElementById('audio');
-            var playButton = document.getElementById('playButton');
             audio.volume = 1.0; // volumen máximo
-
-            audio.play().then(function() {
-                // El autoplay funcionó
-                playButton.style.display = 'none';
-            }).catch(function() {
-                // El autoplay fue bloqueado, mostrar el botón
-                playButton.style.display = 'inline-block';
-            });
-
-            playButton.addEventListener('click', function() {
-                audio.play();
-                playButton.style.display = 'none';
+            audio.play().catch(function() {
+                // Si el navegador bloquea el autoplay, no se hace nada visible
             });
         }
     </script>
