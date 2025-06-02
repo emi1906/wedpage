@@ -2,82 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Página con fondo, contador, audio y botón</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(120deg, #74ebd5 0%, #ACB6E5 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: rgba(255,255,255,0.95);
-      border-radius: 18px;
-      padding: 40px 50px;
-      box-shadow: 0 6px 30px #0001;
-      text-align: center;
-      max-width: 90vw;
-    }
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    #contador {
-      font-size: 1.7rem;
-      margin: 20px 0 28px 0;
-      color: #0091ff;
-    }
-    .audio-control {
-      margin: 23px 0;
-    }
-    button {
-      padding: 13px 30px;
-      background: #0091ff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #0360a5;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Página Interactiva</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <audio id="background-audio" loop>
+    <source src="audio.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
   <div class="container">
     <h1>Bienvenido a mi página</h1>
-    <div id="contador">Vistas: 0</div>
-    <div class="audio-control">
-      <audio controls>
-        <source src="audio.mp3" type="audio/mp3">
-        Tu navegador no soporta el elemento de audio.
-      </audio>
-    </div>
-    <button id="irCodigo">Ir a mi otra página de código</button>
+    <button id="change-bg-btn">Cambiar Fondo</button>
+    <button id="audio-toggle-btn">Reproducir Audio</button>
+    <div id="view-counter"></div>
+    <button id="redirect-btn">Ir a mi otra página</button>
   </div>
-  <script>
-    // Contador de vistas usando localStorage
-    const contadorElemento = document.getElementById('contador');
-    let vistas = parseInt(localStorage.getItem('contadorVistas')) || 0;
-    vistas++;
-    localStorage.setItem('contadorVistas', vistas);
-    contadorElemento.textContent = "Vistas: " + vistas;
 
-    // Botón para redirigir a la otra página de código
-    document.getElementById('irCodigo').onclick = function() {
-      // Cambia la URL de abajo por la página de código que desees
-      window.location.href = "https://github.com/emi1906/wedpage";
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
    
-      
- 
