@@ -1,126 +1,74 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Personalizable con Contador, Audio y Botón</title>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1500&q=80') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        .container {
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            padding: 2rem 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-            text-align: center;
-            max-width: 350px;
-        }
-        h1 {
-            font-size: 2.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-        .audio-container {
-            margin: 1em 0;
-        }
-        .contador-visitas {
-            margin: 1.5em 0 1em 0;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 8px;
-            padding: 0.7em;
-        }
-        .personaliza-fondo {
-            margin-top: 1.5em;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 0.5em;
-            font-size: 0.95em;
-            color: #eee;
-        }
-        .personaliza-fondo input {
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 0.3em 0.6em;
-            width: 180px;
-        }
-        .btn {
-            padding: 0.7em 1.8em;
-            font-size: 1.15rem;
-            border: none;
-            border-radius: 999px;
-            background: #ff4e84;
-            color: #fff;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 1em;
-            transition: background 0.2s;
-        }
-        .btn:hover {
-            background: #fd1d53;
-        }
-        footer {
-            margin-top: 2em;
-            font-size: 0.85em;
-            color: #bbb;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Mi Página 4K</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      /* Cambia la URL por la imagen 4K que prefieras */
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+    .contenido {
+      background: rgba(0,0,0,0.6);
+      display: inline-block;
+      margin-top: 10vh;
+      padding: 40px 60px;
+      border-radius: 20px;
+    }
+    button {
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background: #ff4081;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #e040fb;
+    }
+    #contador {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>¡Bienvenido!</h1>
-        <p>Página personalizable con fondo y audio.</p>
-        
-        <div class="audio-container">
-            <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop controls>
-                Tu navegador no soporta el elemento de audio.
-            </audio>
-        </div>
-        
-        <div class="contador-visitas" id="contadorVisitas">
-            Cargando contador de visitas...
-        </div>
+  <!-- AUDIO (cambia src por tu archivo de audio preferido) -->
+  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
+  
+  <div class="contenido">
+    <h1>Bienvenido/a a mi página 4K</h1>
+    <div id="contador">Visitas: 0</div>
+    <button onclick="window.location.href='https://www.ejemplo.com'">Ir a otra página</button>
+  </div>
 
-        <div style="margin: 1.5em 0;">
-            <button class="btn" onclick="window.location.href='otra-pagina.html'">Ir a otra página</button>
-        </div>
+  <script>
+    // CONTADOR DE VISITAS LOCAL (localStorage)
+    let visitas = localStorage.getItem('contador_visitas');
+    if (!visitas) {
+      visitas = 1;
+    } else {
+      visitas = parseInt(visitas) + 1;
+    }
+    localStorage.setItem('contador_visitas', visitas);
+    document.getElementById('contador').innerText = 'Visitas: ' + visitas;
 
-        <div class="personaliza-fondo">
-            <label for="bgInput">Fondo:</label>
-            <input type="text" id="bgInput" placeholder="URL de imagen 4K" />
-            <button onclick="cambiarFondo()">Cambiar</button>
-        </div>
-        
-        <footer>
-            Creado por emi1906 · Puedes cambiar el fondo y el audio.<br>
-            <span style="opacity:0.7;">Tip: Usa imágenes de <a href="https://unsplash.com/" style="color:#fff;" target="_blank">Unsplash</a> o <a href="https://picsum.photos/" style="color:#fff;" target="_blank">Picsum</a> para obtener imágenes de fondo.</span>
-        </footer>
-    </div>
-    <script>
-        function cambiarFondo() {
-            const url = document.getElementById('bgInput').value;
-            if (url) {
-                document.body.style.background = `url('${url}') no-repeat center center/cover`;
-            }
-        }
-
-        // Contador de visitas usando localStorage (persistente en el navegador)
-        function actualizarContadorVisitas() {
-            let visitas = localStorage.getItem('contadorVisitas') || 0;
-            visitas = parseInt(visitas, 10) + 1;
-            localStorage.setItem('contadorVisitas', visitas);
-            document.getElementById('contadorVisitas').textContent = `Contador de visitas: ${visitas}`;
-        }
-        actualizarContadorVisitas();
-    </script>
+    // Si quieres pausar el audio al hacer clic, puedes agregar este código:
+    // document.getElementById('audio').addEventListener('click', function() {
+    //   if (this.paused) this.play();
+    //   else this.pause();
+    // });
+  </script>
 </body>
 </html>
+          
