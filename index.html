@@ -36,6 +36,16 @@
             font-weight: normal;
             margin-top: 10px;
         }
+        #playButton {
+            display: none;
+            margin-top: 10px;
+            font-size: 1rem;
+            border-radius: 7px;
+            border: none;
+            background: #ffd700;
+            color: #333;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +57,7 @@
             <source src="LadyGaga-BrunoMars-DieWithASmile.mp3" type="audio/mpeg">
             Tu navegador no soporta el elemento de audio.
         </audio>
+        <button id="playButton">Haz clic para escuchar la canción 🎶</button>
         <p class="contador">Visitas: <span id="contador">0</span></p>
         <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
     </div>
@@ -65,11 +76,22 @@
 
             // Intentar reproducir el audio al cargar (algunos navegadores pueden bloquear el autoplay)
             var audio = document.getElementById('audio');
-            if(audio){
-                audio.play().catch(function(){});
-            }
+            var playButton = document.getElementById('playButton');
+            audio.volume = 1.0; // volumen máximo
+
+            audio.play().then(function() {
+                // El autoplay funcionó
+                playButton.style.display = 'none';
+            }).catch(function() {
+                // El autoplay fue bloqueado, mostrar el botón
+                playButton.style.display = 'inline-block';
+            });
+
+            playButton.addEventListener('click', function() {
+                audio.play();
+                playButton.style.display = 'none';
+            });
         }
     </script>
 </body>
 </html>
-  
