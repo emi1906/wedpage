@@ -48,39 +48,28 @@
   <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop></audio>
   <div class="container">
     <h1>Bienvenido a mi página </h1>
-    <p>Visitas: <span id="counter">0
-    <button onclick="window.open('index.html')">Ir a otra página</button>
-  </div>
-  <script>
-    // Contador de visitas usando LocalStorage
-    function updateCounter() {
-      const key = 'hasVisited';
-      const counterKey = 'counterValue';
-      let counter = parseInt(localStorage.getItem(counterKey)) || 0;
-      if (!localStorage.getItem(key)) {
-        // Incrementar contador solo si es la primera visita del usuario en este navegador
-        counter += 1;
-        localStorage.setItem(key, 'true');
-        localStorage.setItem(counterKey, counter);
-      }
-      document.getElementById('counter').textContent = counter;
-    }
-    updateCounter();
+   <!-- Contador de visitas y botón de navegación -->
+<div id="visit-counter-container" style="margin-bottom: 1em;">
+  <span id="visit-counter"></span>
+  <button id="go-to-other-page" style="margin-left: 1em;">Ir a otra página</button>
+</div>
+<script>
+// --- CONTADOR DE VISITAS ---
+const counterKey = 'visitCounter';
+let visits = localStorage.getItem(counterKey);
+if (!visits) {
+  visits = 1;
+} else {
+  visits = parseInt(visits, 10) + 1;
+}
+localStorage.setItem(counterKey, visits);
+document.getElementById('visit-counter').textContent = `Visitas: ${visits}`;
 
-    // Autoplay para algunos navegadores (puede requerir interacción del usuario)
-    window.onload = function() {
-      const audio = document.getElementById('audio');
-      audio.volume = 0.4;
-      audio.play().catch(function() {
-        // Si el navegador bloquea autoplay, pedir clic
-        audio.muted = true;
-        document.body.addEventListener('click', function () {
-          audio.muted = false;
-          audio.play();
-        }, { once: true });
-      });
-    };
-  </script>
-</body>
-</html>
-  
+// --- BOTÓN PARA IR A OTRA PÁGINA ---
+document.getElementById('go-to-other-page').onclick = function() {
+  window.location.href = 'otra-pagina.html'; // Cambia esto por la URL que quieras
+};
+</script>
+ 
+   
+     
