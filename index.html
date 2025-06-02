@@ -1,48 +1,112 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Personalizable 4K con Contador Global</title>
+    <title>Página Personalizable con Contador, Audio y Botón</title>
     <style>
-        /* ... (igual que antes, estilos omitidos por brevedad) ... */
-        body { /* ... */ }
-        .overlay { /* ... */ }
-        header { /* ... */ }
-        h1 { /* ... */ }
-        .audio-container { /* ... */ }
-        main { /* ... */ }
-        .contador { /* ... */ }
-        .btn { /* ... */ }
-        footer { /* ... */ }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1500&q=80') no-repeat center center/cover;
+            /* Cambia la URL de fondo arriba para personalizar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 2rem 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            text-align: center;
+            max-width: 350px;
+        }
+        h1 {
+            font-size: 2.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        .audio-container {
+            margin: 1em 0;
+        }
+        .contador {
+            font-size: 1.25rem;
+            margin: 1.5em 0;
+            padding: 0.7em;
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+        }
+        .btn {
+            padding: 0.7em 1.8em;
+            font-size: 1.15rem;
+            border: none;
+            border-radius: 999px;
+            background: #ff4e84;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1em;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #fd1d53;
+        }
+        .personaliza-fondo {
+            margin-top: 1.5em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 0.95em;
+            color: #eee;
+        }
+        .personaliza-fondo input {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 0.3em 0.6em;
+            width: 180px;
+        }
+        footer {
+            margin-top: 2em;
+            font-size: 0.85em;
+            color: #bbb;
+        }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <header>
-            <h1>¡Bienvenido!</h1>
-            <p>Página con fondo 4K, audio automático y contador de vistas global.</p>
-        </header>
+    <div class="container">
+        <h1>¡Bienvenido!</h1>
+        <p>Página personalizable con fondo, audio, contador y botón de acción.</p>
+        
         <div class="audio-container">
-            <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop>
+            <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop controls>
                 Tu navegador no soporta el elemento de audio.
             </audio>
         </div>
-        <main>
-            <div class="contador" id="contador">
-                Cargando vistas globales...
-            </div>
-            <br>
-            <button class="btn" onclick="alert('¡Gracias por visitar!')">¡Haz clic!</button>
-        </main>
+        
+        <div class="contador" id="contador">
+            Cargando contador global...
+        </div>
+        
+        <button class="btn" onclick="alert('¡Gracias por hacer clic!')">¡Haz clic aquí!</button>
+        
+        <div class="personaliza-fondo">
+            <label for="bgInput">Fondo:</label>
+            <input type="text" id="bgInput" placeholder="URL de imagen 4K" />
+            <button onclick="cambiarFondo()">Cambiar</button>
+        </div>
+        
         <footer>
-            Creado con cariño para ti.
+            Creado por emi1906 · Puedes cambiar el fondo y el audio.<br>
+            <span style="opacity:0.7;">Tip: Usa imágenes de <a href="https://unsplash.com/" style="color:#fff;" target="_blank">Unsplash</a> o <a href="https://picsum.photos/" style="color:#fff;" target="_blank">Picsum</a></span>
         </footer>
     </div>
     <script>
         // CONTADOR DE VISITAS GLOBAL usando CountAPI
-        // Cambia 'tuusuario-tuweb' por un identificador único para tu página
-        const NAMESPACE = 'emi1906-wedpage';
+        const NAMESPACE = 'emi1906-mi-pagina-web';
         const KEY = 'contador';
 
         function actualizarContador() {
@@ -59,15 +123,23 @@
         }
         actualizarContador();
 
-        // AUDIO AUTOPLAY para algunos navegadores con restricción
+        // AUDIO AUTOPLAY para algunos navegadores
         window.addEventListener('load', function() {
             var audio = document.getElementById("audio");
             if(audio && audio.paused){
                 audio.play().catch(()=>{});
             }
         });
+
+        // CAMBIAR FONDO
+        function cambiarFondo() {
+            const url = document.getElementById('bgInput').value.trim();
+            if(url){
+                document.body.style.backgroundImage = `url('${url}')`;
+            }
+        }
     </script>
 </body>
 </html>
-   
 
+        
