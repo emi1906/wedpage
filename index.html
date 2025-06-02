@@ -1,75 +1,73 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Página </title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      /* Cambia la URL por la imagen 4K que prefieras */
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
-      background-size: cover;
-      background-position: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 1px 1px 4px #000;
-    }
-    .container {
-      background: rgba(0,0,0,0.5);
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.7rem 2rem;
-      border: none;
-      background: #00aaff;
-      color: #fff;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    button:hover {
-      background: #0077aa;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Personalizable 4K con Contador Global</title>
+    <style>
+        /* ... (igual que antes, estilos omitidos por brevedad) ... */
+        body { /* ... */ }
+        .overlay { /* ... */ }
+        header { /* ... */ }
+        h1 { /* ... */ }
+        .audio-container { /* ... */ }
+        main { /* ... */ }
+        .contador { /* ... */ }
+        .btn { /* ... */ }
+        footer { /* ... */ }
+    </style>
 </head>
 <body>
-  <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop></audio>
-  <div class="container">
-    <h1>Bienvenido a mi página </h1>
-   <!-- Contador de visitas y botón de navegación -->
-<div id="visit-counter-container" style="margin-bottom: 1em;">
-  <span id="visit-counter"></span>
-  <button id="go-to-other-page" style="margin-left: 1em;">Ir a otra página</button>
-</div>
-<script>
-// --- CONTADOR DE VISITAS ---
-const counterKey = 'visitCounter';
-let visits = localStorage.getItem(counterKey);
-if (!visits) {
-  visits = 1;
-} else {
-  visits = parseInt(visits, 10) + 1;
-}
-localStorage.setItem(counterKey, visits);
-document.getElementById('visit-counter').textContent = `Visitas: ${visits}`;
+    <div class="overlay">
+        <header>
+            <h1>¡Bienvenido!</h1>
+            <p>Página con fondo 4K, audio automático y contador de vistas global.</p>
+        </header>
+        <div class="audio-container">
+            <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop>
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        <main>
+            <div class="contador" id="contador">
+                Cargando vistas globales...
+            </div>
+            <br>
+            <button class="btn" onclick="alert('¡Gracias por visitar!')">¡Haz clic!</button>
+        </main>
+        <footer>
+            Creado con cariño para ti.
+        </footer>
+    </div>
+    <script>
+        // CONTADOR DE VISITAS GLOBAL usando CountAPI
+        // Cambia 'tuusuario-tuweb' por un identificador único para tu página
+        const NAMESPACE = 'emi1906-wedpage';
+        const KEY = 'contador';
 
-// --- BOTÓN PARA IR A OTRA PÁGINA ---
-document.getElementById('go-to-other-page').onclick = function() {
-  window.location.href = 'otra-pagina.html'; // Cambia esto por la URL que quieras
-};
-</script>
- 
+        function actualizarContador() {
+            fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('contador').textContent = 
+                        `Esta página ha sido visitada ${data.value} veces.`;
+                })
+                .catch(() => {
+                    document.getElementById('contador').textContent = 
+                        'No se pudo cargar el contador global.';
+                });
+        }
+        actualizarContador();
+
+        // AUDIO AUTOPLAY para algunos navegadores con restricción
+        window.addEventListener('load', function() {
+            var audio = document.getElementById("audio");
+            if(audio && audio.paused){
+                audio.play().catch(()=>{});
+            }
+        });
+    </script>
+</body>
+</html>
    
-     
+
