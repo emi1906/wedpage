@@ -29,16 +29,13 @@
     <div class="container">
         <h1>¡Felicidades!👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
-    
-        
         <!-- Audio -->
         <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay style="display:none"></audio>
         <br>
         <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+        <p id="contador">Has visitado esta página <span id="visitas"></span> veces.</p>
     </div>
     <script>
-      
-
         // Contador de visitas local
         let visitas = localStorage.getItem('contadorVisitas');
         if (!visitas) {
@@ -51,6 +48,4 @@
     </script>
 </body>
 </html>
-          
-        
        
