@@ -10,14 +10,38 @@
             background-position: center;
             background-repeat: no-repeat;
             min-height: 100vh;
-        <h1>¡Felicidades!👑</h1>
-        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
-        <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay style="display:none"></audio>Add commentMore actions
-        <br>
-            <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
-          </style>
+        }
+        .hidden-audio {
+            display: none;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 7px;
+            border: none;
+            background: #ffd700;
+            color: #333;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>¡Felicidades!👑</h1>
+        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
+        <audio class="hidden-audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay></audio>
+        <p>Visitas a esta página: <span id="visitas">0</span></p>
+        <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+    </div>
     <script>
         // Contador de visitas local
         let visitas = localStorage.getItem('contadorVisitas');
@@ -31,6 +55,3 @@
     </script>
 </body>
 </html>
-
-
-       
