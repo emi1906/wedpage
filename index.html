@@ -1,74 +1,110 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi Página</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      /* Cambia la URL por la imagen 4K que prefieras */
-      background: url('https://www.solofondos.com/wp-content/uploads/2015/11/Estrellas-noche-07-768x512.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      text-align: center;
-    }
-    .contenido {
-      background: rgba(0,0,0,0.6);
-      display: inline-block;
-      margin-top: 10vh;
-      padding: 40px 60px;
-      border-radius: 20px;
-    }
-    button {
-      padding: 12px 30px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 8px;
-      background: #ff4081;
-      color: #fff;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.2s;
-    }
-    button:hover {
-      background: #e040fb;
-    }
-    #contador {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>¡Felicidades Princesa Graduada!</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            background-size: cover;
+            background-position: center;
+            transition: background 0.5s;
+            color: #fff;
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+        }
+        .container {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        #contador {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            background: #fa8eaf;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button {
+            background: #85e085;
+            color: #222;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .audio-controls {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
-  <!-- AUDIO (cambia src por tu archivo de audio preferido) -->
-  <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop></audio>
-  
-  <div class="contenido">
-    <h1>Bienvenido/a a mi página 4K</h1>
-    <div id="contador">Visitas: 0</div>
-    <button onclick="https://github.com/emi1906/Mi-pagina-web">Ir a otra página</button>
-  </div>
-
-  <script>
-    // CONTADOR DE VISITAS LOCAL (localStorage)
-    let visitas = localStorage.getItem('contador_visitas');
-    if (!visitas) {
-      visitas = 1;
-    } else {
-      visitas = parseInt(visitas) + 1;
-    }
-    localStorage.setItem('contador_visitas', visitas);
-    document.getElementById('contador').innerText = 'Visitas: ' + visitas;
-
-    // Si quieres pausar el audio al hacer clic, puedes agregar este código:
-    // document.getElementById('audio').addEventListener('click', function() {
-    //   if (this.paused) this.play();
-    //   else this.pause();
-    // });
-  </script>
+    <div class="container">
+        <h1>¡Felicidades, Princesa! 👑🎓</h1>
+        <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
+        
+        <div id="contador">Visitas: 0</div>
+        
+        <div>
+            <label for="fondo-input">Cambiar Fondo</label>
+            <input type="file" id="fondo-input" accept="image/*">
+        </div>
+        
+        <div class="audio-controls">
+            <label for="audio-input">Agregar Audio</label>
+            <input type="file" id="audio-input" accept="audio/*">
+            <audio id="player" controls style="display:none;"></audio>
+        </div>
+        
+        <button onclick="window.location.href='https://www.tupagina.com'">Ir a la Página Especial</button>
+    </div>
+    
+    <script>
+        // Contador de vistas con localStorage
+        function actualizarContador() {
+            let visitas = localStorage.getItem('contadorVisitas') || 0;
+            visitas++;
+            localStorage.setItem('contadorVisitas', visitas);
+            document.getElementById('contador').textContent = 'Visitas: ' + visitas;
+        }
+        actualizarContador();
+        
+        // Cambiar fondo
+        document.getElementById('fondo-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    document.body.style.backgroundImage = `url('${evt.target.result}')`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Agregar audio personalizado
+        document.getElementById('audio-input').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const audio = document.getElementById('player');
+                audio.src = URL.createObjectURL(file);
+                audio.style.display = 'block';
+                audio.play();
+            }
+        });
+    </script>
 </body>
 </html>
-          
+   
+    
+  
