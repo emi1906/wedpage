@@ -2,25 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Página Interactiva</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Mi Página 4K</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      /* Cambia la URL por la imagen 4K que prefieras */
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .container {
+      background: rgba(0,0,0,0.5);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.7rem 2rem;
+      border: none;
+      background: #00aaff;
+      color: #fff;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #0077aa;
+    }
+  </style>
 </head>
 <body>
-  <audio id="background-audio" loop>
-    <source src="audio.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
-
+  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
   <div class="container">
-    <h1>Bienvenido a mi página</h1>
-    <button id="change-bg-btn">Cambiar Fondo</button>
-    <button id="audio-toggle-btn">Reproducir Audio</button>
-    <div id="view-counter"></div>
-    <button id="redirect-btn">Ir a mi otra página</button>
+    <h1>Bienvenido a mi página 4K</h1>
+    <p>Visitas únicas: <span id="counter">0</span></p>
+    <button onclick="window.open('https://www.ejemplo.com', '_blank')">Ir a otra página</button>
   </div>
+  <script>
+    // Contador de visitas usando LocalStorage
+    function updateCounter() {
+      const key = 'hasVisited';
+      const counterKey = 'counterValue';
+      let counter = parseInt(localStorage.getItem(counterKey)) || 0;
+      if (!localStorage.getItem(key)) {
+        // Incrementar contador solo si es la primera visita del usuario en este navegador
+        counter += 1;
+        localStorage.setItem(key, 'true');
+        localStorage.setItem(counterKey, counter);
+      }
+      document.getElementById('counter').textContent = counter;
+    }
+    updateCounter();
 
-  <script src="script.js"></script>
+    // Autoplay para algunos navegadores (puede requerir interacción del usuario)
+    window.onload = function() {
+      const audio = document.getElementById('audio');
+      audio.volume = 0.4;
+      audio.play().catch(function() {
+        // Si el navegador bloquea autoplay, pedir clic
+        audio.muted = true;
+        document.body.addEventListener('click', function () {
+          audio.muted = false;
+          audio.play();
+        }, { once: true });
+      });
+    };
+  </script>
 </body>
 </html>
-   
+  
