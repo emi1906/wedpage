@@ -1,23 +1,27 @@
-<!-- ... (estilos y encabezado igual) ... -->
 <div class="container">
     <h1>¡Felicidades!👑</h1>
     <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
 
     <div id="contador">Visitas: 0</div>
- <div>
+
+    <!-- Audio bien estructurado -->
+    <audio controls>
         <source src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" type="audio/mpeg">
-          </audio>
-    </div>
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
     <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
+    <button id="reset-contador">Reiniciar contador</button><br>
+    <input type="file" id="fondo-input" accept="image/*">
 </div>
+
 <script>
     function actualizarContador() {
         let visitas = localStorage.getItem('contadorVisitas') || 0;
         visitas++;
         localStorage.setItem('contadorVisitas', visitas);
         document.getElementById('contador').textContent = 'Visitas: ' + visitas;
- }
+    }
     actualizarContador();
 
     document.getElementById('reset-contador').onclick = function() {
