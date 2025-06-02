@@ -85,13 +85,10 @@
             <audio id="audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop controls>
                 Tu navegador no soporta el elemento de audio.
             </audio>
-        </div>
+       
         
-        <div class="contador" id="contador">
-            Cargando contador global...
-        </div>
+       
         
-        <button class="btn" onclick="alert('¡Gracias por hacer clic!')">¡Haz clic aquí!</button>
         
         <div class="personaliza-fondo">
             <label for="bgInput">Fondo:</label>
@@ -102,43 +99,7 @@
         <footer>
             Creado por emi1906 · Puedes cambiar el fondo y el audio.<br>
             <span style="opacity:0.7;">Tip: Usa imágenes de <a href="https://unsplash.com/" style="color:#fff;" target="_blank">Unsplash</a> o <a href="https://picsum.photos/" style="color:#fff;" target="_blank">Picsum</a></span>
-        </footer>
-    </div>
-    <script>
-        // CONTADOR DE VISITAS GLOBAL usando CountAPI
-        const NAMESPACE = 'emi1906-mi-pagina-web';
-        const KEY = 'contador';
-
-        function actualizarContador() {
-            fetch(`https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('contador').textContent = 
-                        `Esta página ha sido visitada ${data.value} veces.`;
-                })
-                .catch(() => {
-                    document.getElementById('contador').textContent = 
-                        'No se pudo cargar el contador global.';
-                });
-        }
-        actualizarContador();
-
-        // AUDIO AUTOPLAY para algunos navegadores
-        window.addEventListener('load', function() {
-            var audio = document.getElementById("audio");
-            if(audio && audio.paused){
-                audio.play().catch(()=>{});
-            }
-        });
-
-        // CAMBIAR FONDO
-        function cambiarFondo() {
-            const url = document.getElementById('bgInput').value.trim();
-            if(url){
-                document.body.style.backgroundImage = `url('${url}')`;
-            }
-        }
-    </script>
+   </script>
 </body>
 </html>
 
