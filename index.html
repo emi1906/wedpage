@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-   <title>¡Felicidades!👑</title>
+    <title>¡Felicidades!👑</title>
     <style>
         body {
-              background-image: url('https://panoramacatolico.com/wp-content/uploads/2019/12/OPINION-CLERO-1.png');
+            background-image: url('https://panoramacatolico.com/wp-content/uploads/2019/12/OPINION-CLERO-1.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -34,26 +34,34 @@
             cursor: pointer;
             margin-top: 20px;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        Visitas
-    </div>
-</body>
-</html>
-   
+        .contador {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-top: 10px;
         }
     </style>
+    <script>
+        // Contador de visitas usando LocalStorage
+        window.onload = function() {
+            let visitas = localStorage.getItem('contadorVisitas');
+            if (visitas === null) {
+                visitas = 1;
+            } else {
+                visitas = parseInt(visitas) + 1;
+            }
+            localStorage.setItem('contadorVisitas', visitas);
+            document.getElementById('contador').textContent = visitas;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>¡Felicidades!👑</h1>
         <p>Hoy celebramos tu graduación y todo lo que has logrado. ¡Te mereces el mundo!</p>
         <audio class="hidden-audio" src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay></audio>
-        <p>Vistas</p>
+        <p class="contador">Visitas: <span id="contador">0</span></p>
         <button onclick="window.location.href='https://emi1906.github.io/Mi-pagina-web/'">Ir a la Página Especial</button>
     </div>
 </body>
 </html>
-           
+            
